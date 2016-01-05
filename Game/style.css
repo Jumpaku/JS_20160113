@@ -1,0 +1,10 @@
+﻿html, body {
+  height: 100%;
+}
+
+#maincanvas {
+    height: 100%;
+	background: #85c9d8;
+	display: block;
+	margin: auto;
+}
