@@ -80,6 +80,13 @@
 					</script>
 				</section>
 
+				<section data-transition="convex" data-markdown>
+					<script type="text/template">
+						#### スライド
+						[http://jumpaku.github.io/JS_20160113/Slide/]
+					</script>
+				</section>
+
 				<section>
 					<h4>index.html</h4>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -375,9 +382,9 @@ Runner.prototype.update = function () {
         var q = 0.0;
         var p = 500.0;
         var a = (this.y0 - q) / (p * p);
-        this.time += 50.0
         this.y = a * (this.time - p) * (this.time - p) + q;
-        if (this.y > this.y0) {
+        this.time += 50.0
+        if (this.time > 1000.0) {
             this.y = this.y0;
             this.state = "run";
             canvas.addEventListener("click", this.startJump);
@@ -386,8 +393,60 @@ Runner.prototype.update = function () {
 }
 </code></pre>
 					</section>
+					<section>
+						<style type="text/css">
+							#graph {
+							background: #fff;
+							display: block;
+							margin: auto;
+							}
+						</style>
+						<canvas id="graph" width="1000" height="600"></canvas>
+						<script>
+							function graph(){
+								var canvas = document.getElementById("graph");
+								var context = canvas.getContext("2d");
+								var baseT=200, baseY=100;
+								var t0 = 0, y0 = 500, p = 500, q = 0;
+								var a = (y0-q)/((t0-p)*(t0-p));
+								var y = y0;
+								for(var t = t0; t <= 1000; t += 50){
+									y=a*(t-p)*(t-p)+q;
+									context.beginPath();
+									context.fillStyle = '#000000';
+									context.arc(t*0.78+baseT,y+baseY*0.98,5,0,Math.PI*2,true);
+									context.closePath();
+									context.fill();
+								}
+								context.beginPath();
+								context.fillStyle = '#000000';
+								context.moveTo(baseT, 0);
+								context.lineTo(baseT, canvas.height);
+								context.moveTo(0, baseY);
+								context.lineTo(canvas.width, baseY);
+								context.closePath();
+								context.stroke();
+								context.font = "italic bold 32px 'Monotype Corsiva'";
+								context.fillText("頂点(p, q)", p*0.78+baseT-60, q*0.98+baseY-32);
+								context.fillText("y切片(0, y(0))", t0*0.78+baseT+35, y0*0.98+baseY);
+								context.fillText("時刻t", 900, baseY-5);
+								context.fillText("y座標y(t)", baseT-150, 350);
+							}
+						</script>
+						<script>graph();</script>
+					</section>
+					<section>
+						<script type="text/x-mathjax-config">
+						  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+						</script>
+						<script type="text/javascript" async
+						  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+						</script>
+						$y(t)=a(t-p)^2+q$<br>
+						$y(0)=this.y0$, $p=500$, $q=0$, $a=\frac{y(0)-q}{(0-p)^2}$
+						\[y(t)=\frac{y(0)}{p^2}(t-p)^2\]
+					</section>
 				</section>
-
 
 
 
