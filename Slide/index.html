@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>JavaScript</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -97,7 +97,7 @@
 				<section data-transition="convex" data-markdown>
 					<script type="text/template">
 						#### ダウンロード
-						http://jumpaku.github.io/JS_20160113/Download.zip/
+						http://jumpaku.github.io/JS_20160113/Download.zip
 					</script>
 				</section>
 
@@ -107,7 +107,7 @@
 
 &lt;html lang="ja"&gt;
 &lt;head&gt;
-    &lt;meta charset="utf-8" /&gt;
+    &lt;meta charset="utf-8" /&gt;&lt;!--メモ帳で書く時はshift_jis--&gt;
     &lt;title&gt;SampleGame&lt;/title&gt;
     &lt;link rel="stylesheet" href="style.css" type="text/css" /&gt;
     &lt;script src="script.js"&gt;&lt;/script&gt;
@@ -202,8 +202,8 @@
 	var sub = function(a, b){
 		return a - b;
 	};
-	console.log(sub(5, 2)); //--> "7"
-	console.log(sub); //--> "function(a, b){ return a+b; }"
+	console.log(sub(5, 2)); //--> "3"
+	console.log(sub); //--> "function(a, b){ return a-b; }"
 
 	console.log((function(a, b) {
 		return a * b;
@@ -321,7 +321,7 @@ function start() {
     setInterval(update, 50.0, runner);
 }
 
-function update() {
+function update(runner) {
     runner.upate();
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
